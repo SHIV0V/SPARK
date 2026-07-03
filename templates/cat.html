@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e1e1e, #282828);
+            color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header .logo img {
+            width: 80px;
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #f0db4f;
+            color: #333;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(18, 18, 18, 0.9), rgba(0, 0, 0, 0.6)),
+                        url('https://via.placeholder.com/1500') no-repeat center center/cover;
+            color: #f4f4f4;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 3px solid #f0db4f;
+            position: relative;
+            height: 300px;
+            max-width: 1450px;
+            width: 1800px;
+            margin: 0 auto;
+            border-radius: 15px;
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            font-size: 50px;
+            margin: 0;
+            padding: 10px;
+            color: #f0db4f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            max-width: 1300px;
+            overflow-wrap: break-word;
+        }
+
+        .hero p {
+            position: absolute;
+            top: 250px;
+            left: 250px;
+            font-size: 20px;
+            max-width: 1000px;
+            margin: 0;
+            padding: 10px;
+            color: #d3d3d3;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Options Container */
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .option-card {
+            background: #333;
+            border: 2px solid #f0db4f;
+            border-radius: 15px;
+            padding: 30px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(240, 219, 79, 0.5);
+        }
+
+        .option-card h2 {
+            color: #f0db4f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .option-card p {
+            color: #f4f4f4;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .glow {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #f0db4f, 0 0 20px #f0db4f, 0 0 30px #f0db4f;
+            }
+            to {
+                box-shadow: 0 0 20px #f0db4f, 0 0 30px #f0db4f, 0 0 40px #f0db4f;
+            }
+        }
+
+        /* Results Container */
+        .results-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .result-card {
+            background: #333;
+            border: 2px solid #f0db4f;
+            border-radius: 15px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .result-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .result-card h3 {
+            color: #f0db4f;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .result-card p {
+            color: #f4f4f4;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .result-card button {
+            background: #f0db4f;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .result-card button:hover {
+            background: #f8c81c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/sp3.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('course_page') }}" onclick="redirectTo(event, '{{ url_for('course_page') }}')">Home</a></li>
+                <li><a href="{{ url_for('about_page') }}" onclick="redirectTo(event, '{{ url_for('about_page') }}')">About</a></li>
+                <li><a href="{{ url_for('help_page') }}" onclick="redirectTo(event, '{{ url_for('help_page') }}')">Help</a></li>
+                <li><a href="{{ url_for('support_page') }}" onclick="redirectTo(event, '{{ url_for('support_page') }}')">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Categories</h1>
+        <p>
+            Explore a comprehensive list of courses, colleges, competitive exams, and career options. Effortlessly navigate through each category to access detailed information and resources tailored to your needs.
+        </p>
+    </div>
+
+    <div class="options-container">
+        <div class="option-card glow" onclick="fetchResults('c')">
+            <h2>All Courses</h2>
+            <p>Explore a wide range of courses tailored to your interests and career goals.</p>
+        </div>
+        <div class="option-card glow" onclick="fetchResults('cl')">
+            <h2>All Colleges</h2>
+            <p>Find the best colleges and universities to pursue your dreams.</p>
+        </div>
+        <div class="option-card glow" onclick="fetchResults('e')">
+            <h2>All Exams</h2>
+            <p>Prepare for competitive exams with the best resources and guidance.</p>
+        </div>
+        <div class="option-card glow" onclick="fetchResults('j')">
+            <h2>All Jobs</h2>
+            <p>Discover job opportunities that match your skills and aspirations.</p>
+        </div>
+    </div>
+
+    <!-- Results Container -->
+    <div class="results-container" id="resultsContainer">
+        <!-- Results will be dynamically added here -->
+    </div>
+
+    <footer>
+        <p>Explore new opportunities, unlock your potential, and take the next step with confidence.</p>
+    </footer>
+
+    <script>
+        // Function to fetch and display results based on type
+        async function fetchResults(type) {
+            try {
+                const response = await fetch(`/get_results?type=${type}`);
+                const data = await response.json();
+
+                const resultsContainer = document.getElementById("resultsContainer");
+                resultsContainer.innerHTML = ""; // Clear previous results
+
+                if (data.length > 0) {
+                    data.forEach(item => {
+                        const resultCard = document.createElement("div");
+                        resultCard.classList.add("result-card");
+
+                        resultCard.innerHTML = `
+                            <img src="${item.image || 'https://via.placeholder.com/250x150'}" alt="${item.name}">
+                            <h3>${item.name}</h3>
+                            <p>${item.description}</p>
+                            <button onclick="redirectToDetails(${item.id})">Read more</button>
+                        `;
+
+                        resultsContainer.appendChild(resultCard);
+                    });
+
+                    // Scroll down a little after showing results
+                    window.scrollBy({
+                        top: 300, // Scroll down by 300 pixels
+                        behavior: 'smooth' // Smooth scrolling
+                    });
+                } else {
+                    resultsContainer.innerHTML = "<p>No results found.</p>";
+                }
+            } catch (error) {
+                console.error("Error fetching results:", error);
+            }
+        }
+
+        // Function to redirect to details page
+        function redirectToDetails(id) {
+            window.location.href = `/details?id=${id}`;
+        }
+    </script>
+</body>
+</html>

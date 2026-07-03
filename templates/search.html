@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e1e1e, #282828);
+            color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header .logo img {
+            width: 80px;
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #f0db4f;
+            color: #333;
+        }
+
+        /* Hero Section (Updated Size) */
+        .hero {
+            background: linear-gradient(135deg, rgba(18, 18, 18, 0.9), rgba(0, 0, 0, 0.6)),
+                        url('https://via.placeholder.com/1500') no-repeat center center/cover;
+            color: #f4f4f4;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 3px solid #f0db4f;
+            position: relative;
+            height: 300px; /* Updated height */
+            max-width: 1450px; /* Updated width */
+            width: 1800px; /* Makes it responsive */
+            margin: 0 auto; /* Centers the section */
+            border-radius: 15px; /* Optional rounded corners */
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            font-size: 50px;
+            margin: 0;
+            padding: 10px;
+            color: #f0db4f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            max-width: 1300px;
+            overflow-wrap: break-word;
+        }
+
+        .hero p {
+            position: absolute;
+            top: 250px;
+            left: 250px;
+            font-size: 20px;
+            max-width: 1000px;
+            margin: 0;
+            padding: 10px;
+            color: #d3d3d3;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Search Button */
+        .search-btn {
+            background: linear-gradient(45deg, #f0db4f, #f8e71c);
+            color: #333;
+            font-size: 22px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #f8c81c, #f5dc3b);
+        }
+
+        .search-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Popup Background */
+        .popup {
+            display: none;
+            position: absolute; /* Change from fixed to absolute */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centers both horizontally and vertically */
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Popup Box */
+        .popup-content {
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(255, 223, 0, 0.5);
+            width: 400px;
+            height: 200px;
+            max-width: 90%;
+            position: absolute; /* Keep it absolute */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centers within the popup */
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 0px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #f9c10b;
+        }
+
+        /* Search Input */
+        #searchBox {
+            width: 80%;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #e0920bc1;
+            border-radius: 5px;
+            outline: none;
+            background: #333;
+            color: white;
+        }
+
+        /* Message Below Search */
+        #searchMessage {
+            margin-top: 20px;
+            color: #bbb;
+            font-size: 16px;
+        }
+
+        /* Style for search results */
+        .search-result {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Hover Effect */
+        .search-result:hover {
+            background-color: #f0db4f; /* Yellow background */
+            color: #333; /* Dark text */
+            font-weight: bold;
+        }
+
+        /* Dark Container Section */
+        .dark-container {
+            background-color: #111;
+            border: 2px solid #f0db4f;
+            padding: 40px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            margin: 40px auto;
+            max-width: 800px;
+            position: relative; /* To handle internal positioning */
+            display: flex; /* Added to center child content */
+            justify-content: center; /* Centers the purple container horizontally */
+            align-items: center; /* Centers the purple container vertically */
+        }
+
+        /* Purple Container Styles */
+        .purple-container2 {
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 300px;
+            height: 300px;
+            border: 5px solid hsl(0, 0%, 0%);
+            border-radius: 35px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        /* Image Styling */
+        .purple-container2 img {
+            width: 90%; /* Scaled down slightly to add padding around the image */
+            height: 70%;
+            object-fit: cover; /* Ensures the image fills the container proportionally */
+            border-radius: 25px; /* Matches container’s rounded corners */
+            margin-top: 10px; /* Adds spacing from the top */
+        }
+
+        /* Visible Text */
+        .text {
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 10px; /* Adds spacing below the image */
+            z-index: 2; /* Ensure text is visible above the image */
+        }
+
+        /* Hidden Description (Appears on Hover) */
+        .hidden-para {
+            display: none;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            z-index: 2; /* Ensure text is visible above the image */
+            padding: 10px; /* Adds padding for better readability */
+        }
+
+        /* Button Styling */
+        .hidden-btn {
+            display: none;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2; /* Ensure button is visible above the image */
+            margin-bottom: 10px; /* Adds spacing below the description */
+        }
+
+        /* Hover effect */
+        .purple-container2:hover {
+            width: 600px; /* Expand to the right */
+            height: 300px; /* Keep height the same */
+            align-items: flex-start; /* Align content to the top */
+            justify-content: flex-start;
+            padding: 20px; /* Add padding for content alignment */
+        }
+
+        .purple-container2:hover img {
+            width: 30%; /* Shrink image on hover */
+            height: auto;
+            margin-right: 20px;
+            float: left; /* Float image to the left */
+        }
+
+        .purple-container2:hover .text {
+            display: none; /* Hide original text */
+        }
+
+        .purple-container2:hover .hidden-para,
+        .purple-container2:hover .hidden-btn {
+            display: block; /* Show hidden content */
+        }
+
+        .purple-container2 {
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="sp3.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Explore Your Future: Universities, Courses, and Career Paths</h1>
+        <p>
+            Discover a world of opportunities with our "Explorer" feature. Whether you have a specific university or course in mind, or you're still exploring your options, this tool helps you search for and access detailed information on universities, courses, and potential career paths. Tailor your search to your needs and find the perfect fit for your academic and professional aspirations.
+        </p>
+        <button class="search-btn">Start Search</button>
+    </div>
+
+    <section class="dark-container">
+        <div class="purple-container2">
+            <img class="img img2" src="db.png" alt="Image">
+            <span class="text text2">Database Administrator</span>
+            <p class="hidden-para hidden-para2">
+                A Database Administrator manages and maintains databases, ensuring data security, integrity, and accessibility. 
+                They handle backups, performance monitoring, and troubleshooting to ensure smooth database operation and efficient data management.
+            </p>
+            <button class="hidden-btn hidden-btn2">Read more</button>
+        </div>
+    </section>
+
+    <div id="searchPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <input type="text" id="searchBox" placeholder="Type to explore..." autocomplete="off">
+            <p id="searchMessage">Start typing to discover new opportunities...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Explore new opportunities, unlock your potential, and take the next step with confidence.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchButton = document.querySelector(".search-btn");
+            const closeButton = document.querySelector(".close-btn");
+            const searchPopup = document.getElementById("searchPopup");
+            const searchBox = document.getElementById("searchBox");
+            const searchMessage = document.getElementById("searchMessage");
+
+            const professionNameElement = document.querySelector('.text2'); 
+            const professionImageElement = document.querySelector('.img2'); 
+            const professionDescElement = document.querySelector('.hidden-para2'); 
+            const purpleContainer = document.querySelector('.purple-container2'); 
+
+            purpleContainer.style.display = "none";
+
+            searchButton.addEventListener("click", function () {
+                searchPopup.style.display = "flex";
+                searchBox.focus(); 
+            });
+
+            closeButton.addEventListener("click", function () {
+                searchPopup.style.display = "none";
+            });
+
+            searchPopup.addEventListener("click", function (event) {
+                if (event.target === searchPopup) {
+                    searchPopup.style.display = "none";
+                }
+            });
+
+            searchBox.addEventListener("input", async function () {
+                const query = searchBox.value.trim();
+
+                if (query === "") {
+                    searchMessage.innerText = "Start typing to discover new opportunities...";
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`/search_professions?q=${encodeURIComponent(query)}&page=1`);
+                    const resultData = await response.json();
+
+                    if (resultData.professions.length > 0) {
+                        searchMessage.innerHTML = resultData.professions
+                            .map(prof => `<div class="search-result" data-id="${prof.id}">${prof.name}</div>`)
+                            .join("");
+                    } else {
+                        searchMessage.innerText = "No results found.";
+                    }
+                } catch (error) {
+                    console.error("Error fetching search results:", error);
+                    searchMessage.innerText = "An error occurred. Please try again.";
+                }
+            });
+
+            searchMessage.addEventListener("click", async function (event) {
+                const target = event.target;
+
+                if (target.classList.contains("search-result")) {
+                    const professionId = target.getAttribute("data-id");
+
+                    try {
+                        const response = await fetch(`/get_profession?id=${encodeURIComponent(professionId)}`);
+                        const profession = await response.json();
+
+                        if (profession.error) {
+                            console.error("Error: ", profession.error);
+                            return;
+                        }
+
+                        professionNameElement.innerText = profession.name;
+                        professionDescElement.innerText = profession.description;
+
+                        if (profession.image) {
+                            professionImageElement.src = profession.image;
+                            professionImageElement.style.display = "block";
+                        } else {
+                            professionImageElement.src = '';
+                            professionImageElement.alt = 'No image available';
+                            professionImageElement.style.display = "none";
+                        }
+
+                        purpleContainer.style.display = "block";
+
+                    } catch (error) {
+                        console.error("Error fetching profession details:", error);
+                    }
+
+                    searchPopup.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

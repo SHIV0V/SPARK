@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e1e1e, #282828);
+            color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header .logo img {
+            width: 80px;
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #f0db4f;
+            color: #333;
+        }
+
+        /* Hero Section (Updated Size) */
+        .hero {
+            background: linear-gradient(135deg, rgba(18, 18, 18, 0.9), rgba(0, 0, 0, 0.6)),
+                        url('https://via.placeholder.com/1500') no-repeat center center/cover;
+            color: #f4f4f4;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 3px solid #f0db4f;
+            position: relative;
+            height: 300px; /* Updated height */
+            max-width: 1450px; /* Updated width */
+            width: 1800px; /* Makes it responsive */
+            margin: 0 auto; /* Centers the section */
+            border-radius: 15px; /* Optional rounded corners */
+        }
+
+        .hero h1 {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            font-size: 50px;
+            margin: 0;
+            padding: 10px;
+            color: #f0db4f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            max-width: 1300px;
+            overflow-wrap: break-word;
+        }
+
+        .hero p {
+            position: absolute;
+            top: 250px;
+            left: 250px;
+            font-size: 20px;
+            max-width: 1000px;
+            margin: 0;
+            padding: 10px;
+            color: #d3d3d3;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Darker Container */
+        .dark-container {
+            background-color: #111;
+            border: 2px solid #f0db4f;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Search Button */
+        .search-btn {
+            background: linear-gradient(45deg, #f0db4f, #f8e71c);
+            color: #333;
+            font-size: 22px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #f8c81c, #f5dc3b);
+        }
+
+        /* Popup Background */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Popup Box */
+        .popup-content {
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(255, 223, 0, 0.5);
+            width: 400px;
+            max-width: 90%;
+            position: relative;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #f9c10b;
+        }
+
+        .close-btn:hover {
+            color: #f0db4f;
+        }
+
+        /* Option Buttons */
+        .option-btn {
+            background: linear-gradient(45deg, #f0db4f, #f8e71c);
+            color: #333;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #f8c81c, #f5dc3b);
+        }
+
+        /* Disabled Option Buttons */
+        .option-btn.disabled {
+            background: #555;
+            color: #888;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* Next Button */
+        .next-btn {
+            background: #555;
+            color: #888;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: not-allowed;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .next-btn.active {
+            background: linear-gradient(45deg, #f0db4f, #f8e71c);
+            color: #333;
+            cursor: pointer;
+        }
+
+        .next-btn.active:hover {
+            background: linear-gradient(45deg, #f8c81c, #f5dc3b);
+            transform: scale(1.05);
+        }
+
+        /* Text Input */
+        .text-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #e0920bc1;
+            border-radius: 5px;
+            outline: none;
+            background: #333;
+            color: white;
+            margin-top: 10px;
+            resize: none; /* Disable manual resizing */
+            overflow: hidden; /* Hide scrollbar */
+            min-height: 50px; /* Minimum height */
+            transition: height 0.2s ease; /* Smooth height transition */
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/sp3.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('course_page') }}" onclick="redirectTo(event, '{{ url_for('course_page') }}')">Home</a></li>
+                <li><a href="{{ url_for('about_page') }}" onclick="redirectTo(event, '{{ url_for('about_page') }}')">About</a></li>
+                <li><a href="{{ url_for('help_page') }}" onclick="redirectTo(event, '{{ url_for('help_page') }}')">Help</a></li>
+                <li><a href="{{ url_for('support_page') }}" onclick="redirectTo(event, '{{ url_for('support_page') }}')">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <div class="hero">
+        <h1>Smart Advisor – Your Personalized Career Guide</h1>
+        <p>
+            Smart Advisor helps you find the right course by asking tailored questions and analyzing your responses. It provides personalized recommendations based on your interests, skills, and career goals. Whether you're exploring options or considering a change, it guides you toward the best path.
+        </p>
+        
+        <button class="search-btn">Start</button>
+    </div>
+
+    
+    <div id="searchPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p>How would you like to explore courses?</p>
+            <button id="choiceBtn" class="option-btn">Choice Based</button>
+            <button id="textBtn" class="option-btn">Text Based</button>
+        </div>
+    </div>
+
+    
+    <div id="choicePopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p>Select a field of interest:</p>
+            <div id="choiceOptions">
+                <button class="option-btn" data-field="business">Business</button>
+                <button class="option-btn" data-field="engineering">Engineering</button>
+                <button class="option-btn" data-field="arts">Arts</button>
+            </div>
+            <button class="next-btn" id="choiceNext">Next</button>
+        </div>
+    </div>
+
+    
+    <div id="questionPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p id="questionText"></p>
+            <div id="questionOptions"></div>
+            <button class="next-btn" id="questionNext">Next</button>
+        </div>
+    </div>
+
+    
+    <div id="textPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p>Enter your area of interest:</p>
+            <textarea id="interestInput" class="text-input" placeholder="Type here..."></textarea>
+            <button class="next-btn" id="textNext">Submit</button>
+        </div>
+    </div>
+
+    
+    <div id="textQuestionsPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <p id="textQuestionText"></p>
+            <textarea id="textQuestionInput" class="text-input" placeholder="Write your description here..."></textarea>
+            <button class="next-btn" id="textQuestionNext">Next</button>
+        </div>
+    </div>
+
+    
+    <section class="dark-container">
+    </section>
+
+    
+    <footer>
+        <p>Explore new opportunities, unlock your potential, and take the next step with confidence.</p>
+    </footer>
+
+    <script>
+        
+        const questions = {
+            business: [
+                {
+                    question: "What area of business are you most interested in?",
+                    options: ["Finance", "Marketing"]
+                },
+                {
+                    question: "Do you prefer working with numbers or people?",
+                    options: ["Numbers", "People"]
+                },
+                {
+                    question: "Are you interested in starting your own business?",
+                    options: ["Yes", "No"]
+                }
+            ],
+            engineering: [
+                {
+                    question: "What type of engineering are you most interested in?",
+                    options: ["Mechanical", "Electrical"]
+                },
+                {
+                    question: "Do you prefer hands-on work or theoretical work?",
+                    options: ["Hands-on", "Theoretical"]
+                },
+                {
+                    question: "Are you interested in working in the tech industry?",
+                    options: ["Yes", "No"]
+                }
+            ],
+            arts: [
+                {
+                    question: "What type of art are you most interested in?",
+                    options: ["Visual Arts", "Performing Arts"]
+                },
+                {
+                    question: "Do you prefer creating art or analyzing it?",
+                    options: ["Creating", "Analyzing"]
+                },
+                {
+                    question: "Are you interested in pursuing a career in the arts?",
+                    options: ["Yes", "No"]
+                }
+            ]
+        };
+
+        const textQuestions = [
+            "Can you describe your favorite place to visit?",
+            "Think about a memorable event in your life. Could you describe what happened and why it was significant to you?",
+            "Imagine your ideal day. What would it look like? Describe the activities, people, and atmosphere in detail."
+        ];
+
+        let currentField = null;
+        let currentQuestionIndex = 0;
+        let currentTextQuestionIndex = 0;
+
+        
+        document.querySelector(".search-btn").addEventListener("click", function() {
+            document.getElementById("searchPopup").style.display = "flex";
+        });
+
+        
+        document.querySelectorAll(".close-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                this.parentElement.parentElement.style.display = "none";
+            });
+        });
+
+        
+        document.getElementById("choiceBtn").addEventListener("click", function() {
+            document.getElementById("searchPopup").style.display = "none";
+            document.getElementById("choicePopup").style.display = "flex";
+        });
+
+        
+        document.getElementById("textBtn").addEventListener("click", function() {
+            document.getElementById("searchPopup").style.display = "none";
+            document.getElementById("textPopup").style.display = "flex";
+        });
+
+        
+        const choiceOptions = document.querySelectorAll("#choicePopup .option-btn");
+        choiceOptions.forEach(btn => {
+            btn.addEventListener("click", function() {
+                currentField = this.getAttribute("data-field");
+                document.getElementById("choicePopup").style.display = "none";
+                startQuestionFlow(currentField);
+            });
+        });
+
+        
+        function startQuestionFlow(field) {
+            currentQuestionIndex = 0;
+            showQuestion(field, currentQuestionIndex);
+        }
+
+        
+        function showQuestion(field, index) {
+            const questionData = questions[field][index];
+            const questionText = document.getElementById("questionText");
+            const questionOptions = document.getElementById("questionOptions");
+
+            questionText.textContent = questionData.question;
+            questionOptions.innerHTML = "";
+
+            questionData.options.forEach(option => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.classList.add("option-btn");
+                button.addEventListener("click", function() {
+                    highlightSelectedButton(this);
+                    enableNextButton("questionNext");
+                });
+                questionOptions.appendChild(button);
+            });
+
+            document.getElementById("questionPopup").style.display = "flex";
+        }
+
+        
+        function highlightSelectedButton(selectedButton) {
+            const buttons = document.querySelectorAll("#questionOptions .option-btn");
+            buttons.forEach(btn => {
+                if (btn === selectedButton) {
+                    btn.classList.remove("disabled");
+                } else {
+                    btn.classList.add("disabled");
+                }
+            });
+        }
+
+        
+        function enableNextButton(buttonId) {
+            const nextButton = document.getElementById(buttonId);
+            nextButton.classList.add("active");
+        }
+
+        
+        document.getElementById("questionNext").addEventListener("click", function() {
+            if (this.classList.contains("active")) {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions[currentField].length) {
+                    showQuestion(currentField, currentQuestionIndex);
+                } else {
+                    document.getElementById("questionPopup").style.display = "none";
+                    alert("Thank you for answering the questions!");
+                }
+            }
+        });
+
+        
+        function startTextQuestions() {
+            currentTextQuestionIndex = 0;
+            showTextQuestion(currentTextQuestionIndex);
+        }
+
+        
+        function showTextQuestion(index) {
+            const questionText = document.getElementById("textQuestionText");
+            questionText.textContent = textQuestions[index];
+            document.getElementById("textQuestionInput").value = ""; // Clear previous input
+            document.getElementById("textQuestionsPopup").style.display = "flex";
+        }
+
+        
+        document.getElementById("textQuestionInput").addEventListener("input", function() {
+            const answer = this.value.trim();
+            const nextButton = document.getElementById("textQuestionNext");
+            if (answer !== "") {
+                nextButton.classList.add("active");
+            } else {
+                nextButton.classList.remove("active");
+            }
+        });
+
+        
+        document.getElementById("textQuestionNext").addEventListener("click", function() {
+            if (this.classList.contains("active")) {
+                const answer = document.getElementById("textQuestionInput").value.trim();
+                if (answer !== "") {
+                    currentTextQuestionIndex++;
+                    if (currentTextQuestionIndex < textQuestions.length) {
+                        showTextQuestion(currentTextQuestionIndex);
+                    } else {
+                        document.getElementById("textQuestionsPopup").style.display = "none";
+                        alert("Thank you for your responses!");
+                    }
+                }
+            }
+        });
+
+
+        
+        const textInput = document.getElementById("interestInput");
+        const textNextButton = document.getElementById("textNext");
+
+        textInput.addEventListener("input", function() {
+            
+            if (this.value.trim() !== "") {
+                textNextButton.classList.add("active");
+            } else {
+                textNextButton.classList.remove("active");
+            }
+
+            
+            this.style.height = "auto";
+            this.style.height = (this.scrollHeight) + "px";
+        });
+
+        
+        textNextButton.addEventListener("click", function() {
+            const interest = textInput.value.trim();
+            if (interest !== "") {
+                document.getElementById("textPopup").style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e1e1e, #282828);
+            color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header .logo img {
+            width: 80px;
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #f0db4f;
+            color: #333;
+        }
+
+        /* Help Container */
+        .help-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            width: 100%;
+            margin: 50px auto;
+            text-align: left;
+        }
+
+        .help-container h1 {
+            font-size: 2rem;
+            color: #f0db4f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .help-container h2 {
+            font-size: 1.5rem;
+            color: #f0db4f;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .help-container p {
+            font-size: 1rem;
+            color: #d3d3d3;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .help-container ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .help-container ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Back Button */
+        .back-button {
+            background: #333;
+            color: #f0db4f;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: 2px solid #f0db4f;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-button:hover {
+            background: #f0db4f;
+            color: #333;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/sp3.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('course_page') }}" onclick="redirectTo(event, '{{ url_for('course_page') }}')">Home</a></li>
+                <li><a href="{{ url_for('about_page') }}" onclick="redirectTo(event, '{{ url_for('about_page') }}')">About</a></li>
+                <li><a href="{{ url_for('help_page') }}" onclick="redirectTo(event, '{{ url_for('help_page') }}')">Help</a></li>
+                <li><a href="{{ url_for('support_page') }}" onclick="redirectTo(event, '{{ url_for('support_page') }}')">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="help-container">
+        <h1>Help Center</h1>
+        <p>
+            Welcome to the Help Center! Here, you can find answers to common questions and learn how to use our platform effectively. If you need further assistance, feel free to contact our support team.
+        </p>
+
+        <!-- FAQ Section -->
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>1. How do I search for universities and courses?</h3>
+        <p>
+            To search for universities and courses:
+        </p>
+        <ul>
+            <li>Go to the <strong>Home</strong> page.</li>
+            <li>Use the rotation bar to navigate to the Explorer.</li>
+            <li>Click on the search button to view search bar for searching detailed information about the university or course.</li>
+        </ul>
+
+        <h3>2. How can I explore career paths?</h3>
+        <p>
+            To explore career paths:
+        </p>
+        <ul>
+            <li>Navigate to the <strong>Search</strong> page.</li>
+            <li>Type the name of a profession or career in the search bar.</li>
+            <li>Click on the search results to view detailed information about the profession, including job responsibilities, required skills, and potential career growth.</li>
+        </ul>
+
+        <h3>3. What should I do if I encounter an issue?</h3>
+        <p>
+            If you encounter any issues while using the platform:
+        </p>
+        <ul>
+            <li>Visit our <a href="{{ url_for('support_page') }}" style="color: #f0db4f;">Support Page</a> to submit a support request.</li>
+            <li>Provide your email address and a detailed description of the issue.</li>
+            <li>Our support team will get back to you as soon as possible to resolve the issue.</li>
+        </ul>
+
+        <h3>4. How do I contact support?</h3>
+        <p>
+            To contact support:
+        </p>
+        <ul>
+            <li>Go to the <strong>Support</strong> page.</li>
+            <li>Fill out the support form with your email address and a description of your issue.</li>
+            <li>Click <strong>Submit</strong> to send your request to our support team.</li>
+        </ul>
+
+        <!-- Back Button -->
+        <button class="back-button" onclick="window.location.href='{{ url_for('course_page') }}'">Back to Home</button>
+    </div>
+
+    <footer>
+        <p>Explore new opportunities, unlock your potential, and take the next step with confidence.</p>
+    </footer>
+
+    <script>
+        function redirectTo(event, url) {
+            event.preventDefault();  // Prevent default navigation
+            window.location.href = url;  // Redirect to the specified URL
+        }
+    </script>
+</body>
+</html>

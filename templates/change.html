@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition Pathway</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search1.css') }}">
+    <style>
+        /* Additional Styles for Transition Pathway */
+        .pathway-container {
+            background: linear-gradient(135deg, #1e1e1e, #282828);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .pathway-container h2 {
+            color: #f0db4f;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #f0db4f;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .dropdown option {
+            background: #333;
+            color: white;
+        }
+
+        .pathway-steps {
+            text-align: left;
+            color: #f4f4f4;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .pathway-steps h3 {
+            color: #f0db4f;
+            font-size: 24px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .pathway-steps ul {
+            list-style-type: none;
+            padding-left: 0;
+            position: relative;
+        }
+
+        .pathway-steps li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .pathway-steps li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background-color: #f0db4f;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #f0db4f, 0 0 20px #f0db4f;
+        }
+
+        .pathway-steps li::after {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 100%;
+            width: 2px;
+            height: 20px;
+            background-color: #f0db4f;
+        }
+
+        .pathway-steps li:last-child::after {
+            display: none;
+        }
+
+        .glow {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #f0db4f, 0 0 20px #f0db4f, 0 0 30px #f0db4f;
+            }
+            to {
+                box-shadow: 0 0 20px #f0db4f, 0 0 30px #f0db4f, 0 0 40px #f0db4f;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/sp3.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('course_page') }}">Home</a></li>
+                <li><a href="{{ url_for('about_page') }}">About</a></li>
+                <li><a href="{{ url_for('help_page') }}">Help</a></li>
+                <li><a href="{{ url_for('support_page') }}">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Transition Pathway</h1>
+        <p>
+            Looking to shift careers? Answer some questions, and we’ll chart a personalized pathway for you, outlining the steps and resources needed to transition successfully into your new field.
+        </p>
+    </div>
+
+    <div class="pathway-container glow">
+        <h2>Chart Your Career Transition</h2>
+        <select id="primaryField" class="dropdown">
+            <option value="" disabled selected>Select Your Primary Field</option>
+            <option value="Web Developer">Web Developer</option>
+            <option value="Avionic Engineer">Avionic Engineer</option>
+        </select>
+        <select id="desiredCareer" class="dropdown">
+            <option value="" disabled selected>Select Your Desired Career</option>
+        </select>
+        <div id="pathwaySteps" class="pathway-steps"></div>
+    </div>
+
+    <footer>
+        <p>Explore new opportunities, unlock your potential, and take the next step with confidence.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const primaryField = document.getElementById("primaryField");
+            const desiredCareer = document.getElementById("desiredCareer");
+            const pathwaySteps = document.getElementById("pathwaySteps");
+
+            // Secondary fields for each primary field
+            const secondaryFields = {
+                "Web Developer": ["Data Scientist", "Cybersecurity Analyst", "Product Manager"],
+                "Avionic Engineer": ["Aerospace Engineer", "Astronaut", "Drone Pilot"]
+            };
+
+            // Pathway data for each career transition
+            const pathways = {
+                "Web Developer-Data Scientist": {
+                    steps: [
+                        "Learn programming languages like Python and R.",
+                        "Gain expertise in data analysis and machine learning.",
+                        "Complete certifications in data science or related fields.",
+                        "Build a portfolio of data science projects.",
+                        "Apply for data scientist roles in tech companies."
+                    ],
+                    resources: [
+                        "<a href='https://www.kaggle.com' target='_blank'>Kaggle</a>",
+                        "<a href='https://www.coursera.org' target='_blank'>Coursera</a>"
+                    ]
+                },
+                "Web Developer-Cybersecurity Analyst": {
+                    steps: [
+                        "Learn cybersecurity fundamentals and tools.",
+                        "Obtain certifications like CompTIA Security+ or CISSP.",
+                        "Gain hands-on experience through internships or labs.",
+                        "Apply for cybersecurity roles in IT companies.",
+                        "Stay updated with the latest security trends and threats."
+                    ],
+                    resources: [
+                        "<a href='https://www.cybrary.it' target='_blank'>Cybrary</a>",
+                        "<a href='https://www.isc2.org' target='_blank'>ISC2</a>"
+                    ]
+                },
+                "Web Developer-Product Manager": {
+                    steps: [
+                        "Gain experience in software development or business analysis.",
+                        "Learn product management frameworks like Agile and Scrum.",
+                        "Complete certifications in product management.",
+                        "Build a portfolio of product management projects.",
+                        "Apply for product manager roles in tech companies."
+                    ],
+                    resources: [
+                        "<a href='https://www.productplan.com' target='_blank'>ProductPlan</a>",
+                        "<a href='https://www.scrum.org' target='_blank'>Scrum.org</a>"
+                    ]
+                },
+                "Avionic Engineer-Aerospace Engineer": {
+                    steps: [
+                        "Complete a Bachelor's degree in Aerospace Engineering or a related field.",
+                        "Gain hands-on experience through internships or co-op programs.",
+                        "Obtain certifications in specialized areas like aerodynamics or propulsion.",
+                        "Apply for roles in aerospace companies or government agencies.",
+                        "Consider pursuing a Master's degree for advanced opportunities."
+                    ],
+                    resources: [
+                        "<a href='https://www.nasa.gov' target='_blank'>NASA Official Website</a>",
+                        "<a href='https://www.aiaa.org' target='_blank'>American Institute of Aeronautics and Astronautics (AIAA)</a>"
+                    ]
+                },
+                "Avionic Engineer-Astronaut": {
+                    steps: [
+                        "Complete a Bachelor's degree in STEM fields (Science, Technology, Engineering, Mathematics).",
+                        "Gain professional experience in a relevant field (e.g., piloting, engineering).",
+                        "Apply to astronaut programs like NASA's Astronaut Candidate Program.",
+                        "Complete rigorous training programs in spaceflight and survival.",
+                        "Participate in space missions and contribute to space exploration."
+                    ],
+                    resources: [
+                        "<a href='https://www.nasa.gov' target='_blank'>NASA Official Website</a>",
+                        "<a href='https://www.esa.int' target='_blank'>European Space Agency (ESA)</a>"
+                    ]
+                },
+                "Avionic Engineer-Drone Pilot": {
+                    steps: [
+                        "Complete a Bachelor's degree in Aviation, Aerospace, or a related field.",
+                        "Obtain a Remote Pilot Certificate from the aviation authority.",
+                        "Gain experience in drone operation and maintenance.",
+                        "Apply for roles in industries like agriculture, filmmaking, or defense.",
+                        "Consider advanced certifications for specialized drone operations."
+                    ],
+                    resources: [
+                        "<a href='https://www.faa.gov' target='_blank'>Federal Aviation Administration (FAA)</a>",
+                        "<a href='https://www.dji.com' target='_blank'>DJI Official Website</a>"
+                    ]
+                }
+            };
+
+            // Update secondary fields based on primary field selection
+            primaryField.addEventListener("change", function () {
+                const primary = primaryField.value;
+                desiredCareer.innerHTML = "<option value='' disabled selected>Select Your Desired Career</option>";
+
+                if (secondaryFields[primary]) {
+                    secondaryFields[primary].forEach(career => {
+                        const option = document.createElement("option");
+                        option.value = career;
+                        option.textContent = career;
+                        desiredCareer.appendChild(option);
+                    });
+                }
+            });
+
+            // Event listener for career selection
+            desiredCareer.addEventListener("change", function () {
+                const primary = primaryField.value;
+                const career = desiredCareer.value;
+                const key = `${primary}-${career}`;
+
+                if (pathways[key]) {
+                    const steps = pathways[key].steps.map(step => `<li>${step}</li>`).join("");
+                    const resources = pathways[key].resources.map(resource => `<li>${resource}</li>`).join("");
+                    pathwaySteps.innerHTML = `
+                        <h3>Steps to Transition to ${career}:</h3>
+                        <ul>${steps}</ul>
+                        <h3>Resources:</h3>
+                        <ul>${resources}</ul>
+                    `;
+                } else {
+                    pathwaySteps.innerHTML = "<p>No pathway found for the selected career.</p>";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

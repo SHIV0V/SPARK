@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search1.css') }}">
+    <style>
+        /* Additional Styles for AI Career Finder */
+        .career-finder-container {
+            background: linear-gradient(135deg, #1e1e1e, #282828);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .career-finder-container h2 {
+            color: #f0db4f;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .career-finder-container p {
+            color: #f4f4f4;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .glow {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #f0db4f, 0 0 20px #f0db4f, 0 0 30px #f0db4f;
+            }
+            to {
+                box-shadow: 0 0 20px #f0db4f, 0 0 30px #f0db4f, 0 0 40px #f0db4f;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/sp3.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('course_page') }}">Home</a></li>
+                <li><a href="{{ url_for('about_page') }}">About</a></li>
+                <li><a href="{{ url_for('help_page') }}">Help</a></li>
+                <li><a href="{{ url_for('support_page') }}">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>AI Career Finder</h1>
+        <p>
+            Discover your ideal career path with the power of AI. Answer a few questions, and our AI Career Finder will analyze your skills, interests, and goals to recommend the best career options for you.
+        </p>
+    </div>
+
+    <div class="career-finder-container glow">
+        <h2>Feature Under Development</h2>
+        <p>
+            We're excited to announce that the <strong>AI Career Finder</strong> feature is currently in development. Our team is working hard to bring you a cutting-edge tool that will revolutionize the way you explore career opportunities.
+        </p>
+        <p>
+            Stay tuned for updates as we prepare to launch this innovative feature. In the meantime, feel free to explore our other resources and services to support your career growth.
+        </p>
+    </div>
+
+    <footer>
+        <p>Explore new opportunities, unlock your potential, and take the next step with confidence.</p>
+    </footer>
+</body>
+</html>
