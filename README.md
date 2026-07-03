@@ -1,4 +1,4 @@
-# 🎓 EDU(SPARK) - Career Search & Recommendation Platform
+# 🎓 SPARK - Career Search & Recommendation Platform
 
 A full-stack web application built using **Flask**, **PostgreSQL**, **HTML**, **CSS**, and **JavaScript** that helps students explore careers, courses, educational pathways, and related professions through an interactive and user-friendly platform.
 
@@ -187,6 +187,97 @@ python app1.py
 
 ---
 
+
+# 🗄 Database Architecture
+
+The application uses a **PostgreSQL relational database** managed through **SQLAlchemy ORM**. The database is designed to efficiently manage profession information, career relationships, AI-based recommendations, external resource links, and user support requests.
+
+```text
+                           PostgreSQL Database
+                                  │
+        ┌─────────────────────────┼─────────────────────────┐
+        │                         │                         │
+        ▼                         ▼                         ▼
+  professions           profession_relations            gmail
+        │                         │
+        │                         └── Stores relationships
+        │                             between professions
+        │
+        ├──────────────┐
+        │              │
+        ▼              ▼
+      link      Top Search Statistics
+        │
+        └── Stores external resources
+            (College Links, Course Links,
+             Career References, Websites)
+
+
+                     AI Recommendation Module
+                               │
+                    ┌──────────┴──────────┐
+                    │                     │
+                    ▼                     ▼
+                   ai                 ai_smpl
+                                           │
+                                           ▼
+                                     ai_smpl_cors
+                                           │
+                                           ▼
+                              ai_profession_relation
+                                           │
+                                           ▼
+                                     professions
+```
+
+## Database Connectivity
+
+The backend connects to PostgreSQL using **Flask SQLAlchemy**. All database operations are performed through ORM models, making the application scalable and maintainable.
+
+### Database Workflow
+
+```text
+User
+   │
+   ▼
+Frontend (HTML • CSS • JavaScript)
+   │
+   ▼
+Flask Backend (app1.py)
+   │
+   ▼
+SQLAlchemy ORM
+   │
+   ▼
+PostgreSQL Database
+```
+
+## Database Tables
+
+| Table | Purpose |
+|--------|---------|
+| **professions** | Stores profession, course, salary, descriptions, images, and other career-related information. |
+| **profession_relations** | Maintains relationships between professions for recommendation purposes. |
+| **link** | Stores external references such as college websites, course pages, and additional resources. |
+| **gmail** | Stores user support requests submitted through the contact form. |
+| **ai** | Stores AI recommendation keywords. |
+| **ai_smpl** | Maps AI keywords with professions. |
+| **ai_smpl_cors** | Connects AI recommendations with related courses. |
+| **ai_profession_relation** | Stores AI-generated profession relationship data used for recommendations. |
+
+### Database Features
+
+- Relational database design using PostgreSQL
+- SQLAlchemy ORM for database operations
+- Profession recommendation mapping
+- AI keyword-based recommendation support
+- External educational resource management
+- User support request management
+- Scalable and modular database architecture
+
+
+---
+
 # 💡 Skills Demonstrated
 
 - Full Stack Web Development
@@ -204,7 +295,7 @@ python app1.py
 
 # 🚀 Future Enhancements
 
-- AI-Based Career Recommendation
+- AI-Based Career Recommendation (level 2)
 - User Authentication
 - Admin Dashboard
 - Resume Recommendation System
