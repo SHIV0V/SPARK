@@ -29,7 +29,7 @@
         <button class="search-btn">Start Search</button>
     </div>
 
-    <!-- Searched Result Section -->
+    
     <section id="searchedResultSection" class="searched-result-section">
         <h2>Searched Result</h2>
         <div class="dark-container">
@@ -42,15 +42,15 @@
         </div>
     </section>
 
-    <!-- Relevant Section -->
+    
     <section class="relevant-section">
         <h2>Relevant</h2>
         <div class="dark-container relevant-results-grid">
-            <!-- Relevant results will be dynamically added here -->
+            
         </div>
     </section>
 
-    <!-- Search Popup -->
+    
     <div id="searchPopup" class="popup">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
@@ -73,7 +73,7 @@
             window.location.href = url;
         }
 
-        // Function to redirect to details page
+        
         function redirectToDetails(event) {
             event.preventDefault();
             const professionId = event.target.getAttribute("data-id");
@@ -82,17 +82,17 @@
             }
         }
 
-        // Function to fetch relevant professions based on selected profession
+       
         function getRelevantProfessions(profession_id) {
-            // Send AJAX request to fetch relevant professions
+            
             fetch(`/get_relevant_data?profession_id=${profession_id}`)
                 .then(response => response.json())
                 .then(data => {
-                    // Get the container to hold the relevant professions
-                    const resultsContainer = document.querySelector('.relevant-results-grid');
-                    resultsContainer.innerHTML = ''; // Clear any existing content
                     
-                    // Loop over the relevant professions and create containers
+                    const resultsContainer = document.querySelector('.relevant-results-grid');
+                    resultsContainer.innerHTML = '';
+                    
+                    
                     data.forEach(profession => {
                         const container = document.createElement('div');
                         container.classList.add('relevant-result-item');
@@ -102,14 +102,14 @@
                             <div class="hidden-para">${profession.description}</div>
                             <button class="hidden-btn" data-id="${profession.id}" onclick="redirectToDetails(event)">Learn More</button>
                         `;
-                        resultsContainer.appendChild(container); // Append the new container
+                        resultsContainer.appendChild(container); 
                     });
                 })
                 .catch(error => console.error('Error fetching relevant professions:', error));
         }
 
-        // Example: Call the function when a profession is selected
-        const professionId = 1;  // Replace with the actual profession ID
+        
+        const professionId = 1;  
         getRelevantProfessions(professionId);
     </script>
 </body>
