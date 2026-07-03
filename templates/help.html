@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help Center</title>
     <style>
-        /* General Styles */
+       
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -18,7 +18,7 @@
             justify-content: space-between;
         }
 
-        /* Header Styles */
+        
         header {
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
@@ -58,7 +58,7 @@
             color: #333;
         }
 
-        /* Help Container */
+      
         .help-container {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 40px;
@@ -100,7 +100,7 @@
             margin-bottom: 10px;
         }
 
-        /* Back Button */
+        
         .back-button {
             background: #333;
             color: #f0db4f;
@@ -121,7 +121,7 @@
             color: #333;
         }
 
-        /* Footer Styles */
+        
         footer {
             background-color: #333;
             color: white;
@@ -199,7 +199,7 @@
             <li>Click <strong>Submit</strong> to send your request to our support team.</li>
         </ul>
 
-        <!-- Back Button -->
+        
         <button class="back-button" onclick="window.location.href='{{ url_for('course_page') }}'">Back to Home</button>
     </div>
 
@@ -209,8 +209,8 @@
 
     <script>
         function redirectTo(event, url) {
-            event.preventDefault();  // Prevent default navigation
-            window.location.href = url;  // Redirect to the specified URL
+            event.preventDefault();  
+            window.location.href = url;  /
         }
     </script>
 </body>
