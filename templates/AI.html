@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Second Page</title>
     <style>
-        /* General Styles */
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -18,7 +18,7 @@
             justify-content: space-between;
         }
 
-        /* Header Styles */
+        
         header {
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
@@ -58,7 +58,7 @@
             color: #333;
         }
 
-        /* Hero Section (Updated Size) */
+        
         .hero {
             background: linear-gradient(135deg, rgba(18, 18, 18, 0.9), rgba(0, 0, 0, 0.6)),
                         url('https://via.placeholder.com/1500') no-repeat center center/cover;
@@ -67,11 +67,11 @@
             text-align: center;
             border-bottom: 3px solid #f0db4f;
             position: relative;
-            height: 300px; /* Updated height */
-            max-width: 1450px; /* Updated width */
-            width: 1800px; /* Makes it responsive */
-            margin: 0 auto; /* Centers the section */
-            border-radius: 15px; /* Optional rounded corners */
+            height: 300px; 
+            max-width: 1450px; 
+            width: 1800px;
+            margin: 0 auto; 
+            border-radius: 15px; 
         }
 
         .hero h1 {
@@ -101,7 +101,7 @@
             text-align: left;
         }
 
-        /* Darker Container */
+        
         .dark-container {
             background-color: #111;
             border: 2px solid #f0db4f;
@@ -113,7 +113,7 @@
             max-width: 800px;
         }
 
-        /* Footer Styles */
+        
         footer {
             background-color: #333;
             color: white;
@@ -126,7 +126,7 @@
             font-size: 16px;
         }
 
-        /* Search Button */
+        
         .search-btn {
             background: linear-gradient(45deg, #f0db4f, #f8e71c);
             color: #333;
@@ -149,7 +149,7 @@
             background: linear-gradient(45deg, #f8c81c, #f5dc3b);
         }
 
-        /* Popup Background */
+        
         .popup {
             display: none;
             position: fixed;
@@ -163,7 +163,7 @@
             z-index: 1000;
         }
 
-        /* Popup Box */
+        
         .popup-content {
             background: #222;
             padding: 30px;
@@ -175,7 +175,7 @@
             position: relative;
         }
 
-        /* Close Button */
+        
         .close-btn {
             position: absolute;
             top: 10px;
@@ -189,7 +189,7 @@
             color: #f0db4f;
         }
 
-        /* Option Buttons */
+        
         .option-btn {
             background: linear-gradient(45deg, #f0db4f, #f8e71c);
             color: #333;
@@ -208,7 +208,7 @@
             background: linear-gradient(45deg, #f8c81c, #f5dc3b);
         }
 
-        /* Disabled Option Buttons */
+        
         .option-btn.disabled {
             background: #555;
             color: #888;
@@ -216,7 +216,7 @@
             opacity: 0.6;
         }
 
-        /* Next Button */
+        
         .next-btn {
             background: #555;
             color: #888;
@@ -241,7 +241,7 @@
             transform: scale(1.05);
         }
 
-        /* Text Input */
+        
         .text-input {
             width: 80%;
             padding: 10px;
@@ -252,10 +252,10 @@
             background: #333;
             color: white;
             margin-top: 10px;
-            resize: none; /* Disable manual resizing */
-            overflow: hidden; /* Hide scrollbar */
-            min-height: 50px; /* Minimum height */
-            transition: height 0.2s ease; /* Smooth height transition */
+            resize: none; 
+            overflow: hidden; 
+            min-height: 50px; 
+            transition: height 0.2s ease; 
         }
     </style>
 </head>
@@ -509,7 +509,7 @@
         function showTextQuestion(index) {
             const questionText = document.getElementById("textQuestionText");
             questionText.textContent = textQuestions[index];
-            document.getElementById("textQuestionInput").value = ""; // Clear previous input
+            document.getElementById("textQuestionInput").value = ""; 
             document.getElementById("textQuestionsPopup").style.display = "flex";
         }
 
