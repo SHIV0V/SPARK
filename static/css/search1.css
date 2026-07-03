@@ -60,11 +60,11 @@ nav ul li a:hover {
     text-align: center;
     border-bottom: 3px solid #f0db4f;
     position: relative;
-    height: 300px; /* Updated height */
-    max-width: 1450px; /* Updated width */
-    width: 1800px; /* Makes it responsive */
-    margin: 0 auto; /* Centers the section */
-    border-radius: 15px; /* Optional rounded corners */
+    height: 300px; 
+    max-width: 1450px; 
+    width: 1800px; 
+    margin: 0 auto; 
+    border-radius: 15px; 
 }
 
 .hero h1 {
@@ -139,19 +139,19 @@ footer p {
 /* Popup Background */
 .popup {
     display: none;
-    position: fixed; /* Changed to fixed positioning */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    z-index: 1000; /* Ensure it's above other elements */
-    -webkit-font-smoothing: antialiased; /* Improve font rendering */
-    -moz-osx-font-smoothing: grayscale; /* Improve font rendering */
-    transform: translateZ(0); /* Enable hardware acceleration */
-    will-change: transform; /* Optimize rendering */
+    justify-content: center; 
+    align-items: center;
+    z-index: 1000; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+    transform: translateZ(0); 
+    will-change: transform;
 }
 
 /* Popup Box */
@@ -162,12 +162,12 @@ footer p {
     text-align: center;
     box-shadow: 0 8px 16px rgba(255, 223, 0, 0.5);
     width: 400px;
-    max-height: 350px; /* Added: Limit the height of the popup */
-    overflow: hidden; /* Added: Prevent content from overflowing */
+    max-height: 350px; 
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    -webkit-font-smoothing: antialiased; /* Improve font rendering */
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
@@ -197,8 +197,8 @@ footer p {
     margin-top: 20px;
     color: #bbb;
     font-size: 16px;
-    max-height: 200px; /* Added: Limit the height of the search results container */
-    overflow-y: auto; /* Added: Enable vertical scrolling */
+    max-height: 200px; 
+    overflow-y: auto; 
     width: 100%;
     padding: 10px;
     border: 1px solid #444;
@@ -212,14 +212,14 @@ footer p {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    margin-bottom: 5px; /* Added: Spacing between results */
-    color: white; /* Change this to white */
+    margin-bottom: 5px; 
+    color: white; 
 }
 
 /* Hover Effect */
 .search-result:hover {
-    background-color: #f0db4f; /* Yellow background */
-    color: #ffffff; /* Dark text */
+    background-color: #f0db4f; 
+    color: #ffffff; 
     font-weight: bold;
 }
 
@@ -233,10 +233,10 @@ footer p {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
     margin: 40px auto;
     max-width: 1800px;
-    position: relative; /* To handle internal positioning */
-    display: flex; /* Added to center child content */
-    justify-content: center; /* Centers the purple container horizontally */
-    align-items: center; /* Centers the purple container vertically */
+    position: relative; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
 }
 
 /* Purple Container Styles */
@@ -259,11 +259,11 @@ footer p {
 
 /* Image Styling */
 .purple-container2 img {
-    width: 90%; /* Scaled down slightly to add padding around the image */
+    width: 90%; 
     height: 70%;
-    object-fit: cover; /* Ensures the image fills the container proportionally */
-    border-radius: 25px; /* Matches container’s rounded corners */
-    margin-top: -10px; /* Adds spacing from the top */
+    object-fit: cover; 
+    border-radius: 25px; 
+    margin-top: -10px;
 }
 
 /* Visible Text */
@@ -271,8 +271,8 @@ footer p {
     color: white;
     font-size: 20px;
     text-align: center;
-    margin-top: 10px; /* Adds spacing below the image */
-    z-index: 2; /* Ensure text is visible above the image */
+    margin-top: 10px; 
+    z-index: 2; 
 }
 
 /* Hidden Description (Appears on Hover) */
@@ -281,8 +281,8 @@ footer p {
     color: #fff;
     font-size: 16px;
     text-align: center;
-    z-index: 2; /* Ensure text is visible above the image */
-    padding: 10px; /* Adds padding for better readability */
+    z-index: 2; 
+    padding: 10px; 
 }
 
 /* Button Styling */
@@ -296,38 +296,38 @@ footer p {
     border-radius: 5px;
     cursor: pointer;
     z-index: 2;
-    margin-bottom: 10px; /* Adds spacing below the description */
-    float: right; /* Moves the button to the right */
+    margin-bottom: 10px; 
+    float: right; 
 }
 
 /* Hover effect */
 .purple-container2:hover {
-    width: 580px; /* Expand to the right */
-    height: 150px; /* Keep height the same */
-    align-items: flex-start; /* Align content to the top */
+    width: 580px; 
+    height: 150px; 
+    align-items: flex-start; 
     justify-content: flex-start;
-    padding: 20px; /* Add padding for content alignment */
+    padding: 20px; 
     
 }
 
 .purple-container2:hover img {
-    width: 30%; /* Shrink image on hover */
+    width: 30%; 
     height: auto;
     margin-right: 20px;
-    float: left; /* Float image to the left */
+    float: left; 
 }
 
 .purple-container2:hover .text {
-    display: none; /* Hide original text */
+    display: none; 
 }
 
 .purple-container2:hover .hidden-para,
 .purple-container2:hover .hidden-btn {
-    display: block; /* Show hidden content */
+    display: block; 
 }
 
 .purple-container2 {
-    display: block; /* Make it visible once populated */
+    display: block; 
 }
 
 /* Searched Result Section */
@@ -347,14 +347,14 @@ footer p {
 .relevant-results-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px; /* Space between items */
-    justify-content: start; /* Align items to the left */
+    gap: 5px; 
+    justify-content: start; 
     margin-left: -400px;
     width: 1500px
 }
 
 .relevant-result-item {
-    width: calc(33.33% - 10px); /* Three items per row with some gap */
+    width: calc(33.33% - 10px); 
     box-sizing: border-box;
     border: 1px solid #ccc;
     padding: 10px;
@@ -372,7 +372,7 @@ footer p {
 .relevant-result-item h3 {
     margin-top: 10px;
     font-size: 1.2rem;
-    color: #333; /* Dark text for better readability */
+    color: #333; 
 }
 
 .relevant-result-item p {
@@ -382,13 +382,13 @@ footer p {
 
 
 .search-dropdown {
-    max-height: 150px;  /* Set a strict height */
-    overflow-y: auto;   /* Enable scrolling */
-    width: 100%;        /* Ensure it fits inside */
+    max-height: 150px;  
+    overflow-y: auto;   
+    width: 100%;        
     background: #222;
     border: 1px solid #444;
     position: absolute;
-    bottom: 10px;  /* Adjust this if needed */
+    bottom: 10px;  
     left: 0;
     z-index: 1000;
 }
@@ -398,10 +398,10 @@ footer p {
     width: 500px;
     max-width: 500px;
     max-height: 350px;
-    overflow: hidden; /* Ensures it won’t grow */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  /* Keeps the dropdown inside */
+    justify-content: space-between; 
     padding: 10px;
     border-radius: 8px;
     box-sizing: border-box;
