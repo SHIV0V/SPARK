@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     positionwebs();
 
-    // Fetch and populate top searched professions
+    // Fetch top searched professions
     fetch("/get_top_searches")
         .then(response => response.json())
         .then(data => {
