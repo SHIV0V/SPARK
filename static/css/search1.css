@@ -1,0 +1,420 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e1e1e, #282828);
+    color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header .logo img {
+    width: 80px;
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #f0db4f;
+    color: #333;
+}
+
+/* Hero Section (Updated Size) */
+.hero {
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.9), rgba(0, 0, 0, 0.6)),
+                url('https://via.placeholder.com/1500') no-repeat center center/cover;
+    color: #f4f4f4;
+    padding: 100px 20px;
+    text-align: center;
+    border-bottom: 3px solid #f0db4f;
+    position: relative;
+    height: 300px; /* Updated height */
+    max-width: 1450px; /* Updated width */
+    width: 1800px; /* Makes it responsive */
+    margin: 0 auto; /* Centers the section */
+    border-radius: 15px; /* Optional rounded corners */
+}
+
+.hero h1 {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    font-size: 50px;
+    margin: 0;
+    padding: 10px;
+    color: #f0db4f;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    max-width: 1300px;
+    overflow-wrap: break-word;
+}
+
+.hero p {
+    position: absolute;
+    top: 250px;
+    left: 250px;
+    font-size: 20px;
+    max-width: 1000px;
+    margin: 0;
+    padding: 10px;
+    color: #d3d3d3;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Search Button */
+.search-btn {
+    background: linear-gradient(45deg, #f0db4f, #f8e71c);
+    color: #333;
+    font-size: 22px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg, #f8c81c, #f5dc3b);
+}
+
+.search-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Background */
+.popup {
+    display: none;
+    position: fixed; /* Changed to fixed positioning */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000; /* Ensure it's above other elements */
+    -webkit-font-smoothing: antialiased; /* Improve font rendering */
+    -moz-osx-font-smoothing: grayscale; /* Improve font rendering */
+    transform: translateZ(0); /* Enable hardware acceleration */
+    will-change: transform; /* Optimize rendering */
+}
+
+/* Popup Box */
+.popup-content {
+    background: #222;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(255, 223, 0, 0.5);
+    width: 400px;
+    max-height: 350px; /* Added: Limit the height of the popup */
+    overflow: hidden; /* Added: Prevent content from overflowing */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -webkit-font-smoothing: antialiased; /* Improve font rendering */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #f9c10b;
+}
+
+/* Search Input */
+#searchBox {
+    width: 95%;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #e0920bc1;
+    border-radius: 5px;
+    outline: none;
+    background: #333;
+    color: white;
+}
+
+#searchMessage {
+    margin-top: 20px;
+    color: #bbb;
+    font-size: 16px;
+    max-height: 200px; /* Added: Limit the height of the search results container */
+    overflow-y: auto; /* Added: Enable vertical scrolling */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: #333;
+}
+
+/* Style for search results */
+.search-result {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 5px; /* Added: Spacing between results */
+    color: white; /* Change this to white */
+}
+
+/* Hover Effect */
+.search-result:hover {
+    background-color: #f0db4f; /* Yellow background */
+    color: #ffffff; /* Dark text */
+    font-weight: bold;
+}
+
+/* Dark Container Section */
+.dark-container {
+    background-color: #111;
+    border: 2px solid #f0db4f;
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    margin: 40px auto;
+    max-width: 1800px;
+    position: relative; /* To handle internal positioning */
+    display: flex; /* Added to center child content */
+    justify-content: center; /* Centers the purple container horizontally */
+    align-items: center; /* Centers the purple container vertically */
+}
+
+/* Purple Container Styles */
+.purple-container2 {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 200px;
+    height: 200px;
+    border: 5px solid hsl(0, 0%, 0%);
+    border-radius: 35px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+/* Image Styling */
+.purple-container2 img {
+    width: 90%; /* Scaled down slightly to add padding around the image */
+    height: 70%;
+    object-fit: cover; /* Ensures the image fills the container proportionally */
+    border-radius: 25px; /* Matches container’s rounded corners */
+    margin-top: -10px; /* Adds spacing from the top */
+}
+
+/* Visible Text */
+.text {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px; /* Adds spacing below the image */
+    z-index: 2; /* Ensure text is visible above the image */
+}
+
+/* Hidden Description (Appears on Hover) */
+.hidden-para {
+    display: none;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    z-index: 2; /* Ensure text is visible above the image */
+    padding: 10px; /* Adds padding for better readability */
+}
+
+/* Button Styling */
+.hidden-btn {
+    display: none;
+    background-color: #ff0000;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2;
+    margin-bottom: 10px; /* Adds spacing below the description */
+    float: right; /* Moves the button to the right */
+}
+
+/* Hover effect */
+.purple-container2:hover {
+    width: 580px; /* Expand to the right */
+    height: 150px; /* Keep height the same */
+    align-items: flex-start; /* Align content to the top */
+    justify-content: flex-start;
+    padding: 20px; /* Add padding for content alignment */
+    
+}
+
+.purple-container2:hover img {
+    width: 30%; /* Shrink image on hover */
+    height: auto;
+    margin-right: 20px;
+    float: left; /* Float image to the left */
+}
+
+.purple-container2:hover .text {
+    display: none; /* Hide original text */
+}
+
+.purple-container2:hover .hidden-para,
+.purple-container2:hover .hidden-btn {
+    display: block; /* Show hidden content */
+}
+
+.purple-container2 {
+    display: block; /* Make it visible once populated */
+}
+
+/* Searched Result Section */
+.searched-result-section, .relevant-section {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.searched-result-section h2, .relevant-section h2 {
+    color: #f0db4f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Relevant Results Grid Layout */
+.relevant-results-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Space between items */
+    justify-content: start; /* Align items to the left */
+    margin-left: -400px;
+    width: 1500px
+}
+
+.relevant-result-item {
+    width: calc(33.33% - 10px); /* Three items per row with some gap */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.relevant-result-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.relevant-result-item h3 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #333; /* Dark text for better readability */
+}
+
+.relevant-result-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+.search-dropdown {
+    max-height: 150px;  /* Set a strict height */
+    overflow-y: auto;   /* Enable scrolling */
+    width: 100%;        /* Ensure it fits inside */
+    background: #222;
+    border: 1px solid #444;
+    position: absolute;
+    bottom: 10px;  /* Adjust this if needed */
+    left: 0;
+    z-index: 1000;
+}
+
+.search-popup {
+    position: relative;
+    width: 500px;
+    max-width: 500px;
+    max-height: 350px;
+    overflow: hidden; /* Ensures it won’t grow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* Keeps the dropdown inside */
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+
+.search-dropdown li {
+    padding: 8px 12px;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 95%;
+    display: block;
+}
